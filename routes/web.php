@@ -13,41 +13,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/******************** front routes ******************/
 
-Route::get('/', function () {
-    return view('front.home');
-})->name('front_home');
-Route::get('/front/event', function () {
-    return view('front.event');
-})->name('event');
-Route::get('/concert', function () {
-    return view('front.concert');
-})->name('concert');
+
+
+
+
+Route::get('/front/news', [App\Http\Controllers\Front\NewsController::class, 'index'])->name('news');
+Route::get('/front/news/category/{category}', [App\Http\Controllers\Front\NewsController::class , 'filterByCategory'])->name('news.filter');
+Route::get('/front/news/details/{id}', [App\Http\Controllers\Front\NewsController::class , 'details'])->name('news_details');
+Route::get('/front/playlist/episodes/{id}', [App\Http\Controllers\Front\ProdcastController::class , 'episodes'])->name('episodes');
+Route::get('/front/playlist', [App\Http\Controllers\Front\ProdcastController::class , 'index'])->name('podcast');
+Route::get('/front/festival', [App\Http\Controllers\Front\FestivalController::class , 'index'])->name('festival');
+Route::get('/front/festival/event/{event}', [App\Http\Controllers\Front\FestivalController::class , 'event'])->name('event_details');
+Route::get('/', [App\Http\Controllers\Front\HomeController::class , 'index'])->name('front_home');
+
+
+
+
 Route::get('/branch', function () {
     return view('front.branch');
 })->name('branch');
 Route::get('/adverticement', function () {
     return view('front.adverticement');
 })->name('adverticement');
-Route::get('/front/news', function () {
-    return view('front.news');
-})->name('news');
-Route::get('/news-details', function () {
-    return view('front.news-details');
-})->name('news-details');
-Route::get('/podcast', function () {
-    return view('front.podcast');
-})->name('podcast');
-Route::get('/episodes', function () {
-    return view('front.episodes');
-})->name('episodes');
-
 
 
 
 Route::get('/home1', function () {
     return view('welcome');
 });
+
+
+
+
+/******************** End front routes ******************/
 
 Auth::routes();
 
@@ -60,6 +60,9 @@ Route::prefix('moyasar')->group(function () {
     Route::get('/approve',   [App\Http\Controllers\MoyasarController::class, 'approve'])->name('moyasar.approve');
     Route::post('/checkout', [App\Http\Controllers\MoyasarController::class, 'checkout'])->middleware(['auth'])->name('moyasar.checkout');
 });
+
+
+/******************** Admin routes ******************/
 
 Route::group([
     'middleware' => ['auth:web', 'admin.permissions'], 
@@ -152,6 +155,49 @@ Route::group([
         ]
     ]);
 
+    Route::resource('adverticement', AdverticementController::class, [
+        'names' => [
+            'index'     => 'admin.adverticement.index',
+            'store'     => 'admin.adverticement.store',
+            'show'      => 'admin.adverticement.show',
+            'edit'      => 'admin.adverticement.edit',
+            'update'    => 'admin.adverticement.update',
+            'destroy'   => 'admin.adverticement.destroy'
+        ]
+    ]);
+
+    Route::resource('motion', MotionController::class, [
+        'names' => [
+            'index'     => 'admin.motion.index',
+            'store'     => 'admin.motion.store',
+            'show'      => 'admin.motion.show',
+            'edit'      => 'admin.motion.edit',
+            'update'    => 'admin.motion.update',
+            'destroy'   => 'admin.motion.destroy'
+        ]
+    ]);
+
+    Route::resource('branch', BranchController::class, [
+        'names' => [
+            'index'     => 'admin.branch.index',
+            'store'     => 'admin.branch.store',
+            'show'      => 'admin.branch.show',
+            'edit'      => 'admin.branch.edit',
+            'update'    => 'admin.branch.update',
+            'destroy'   => 'admin.branch.destroy'
+        ]
+    ]);
+
+    Route::resource('places', PlacesController::class, [
+        'names' => [
+            'index'     => 'admin.places.index',
+            'store'     => 'admin.places.store',
+            'show'      => 'admin.places.show',
+            'edit'      => 'admin.places.edit',
+            'update'    => 'admin.places.update',
+            'destroy'   => 'admin.places.destroy'
+        ]
+    ]);
     
 
     Route::resource('settings', SettingController::class, [
@@ -171,7 +217,7 @@ Route::group([
     Route::get('/newsCategory-search',     [App\Http\Controllers\Admin\NewsCategoryController::class,   'dataAjax'])->name('admin.search.news_category');
     Route::get('/playlist-search',         [App\Http\Controllers\Admin\PlayListController::class,       'dataAjax'])->name('admin.search.playlist');
     Route::get('/festival-search',         [App\Http\Controllers\Admin\FestivalController::class,       'dataAjax'])->name('admin.search.festival');
-    Route::get('/districts-search',        [App\Http\Controllers\Admin\DistrictController::class,       'dataAjax'])->name('admin.search.districts');
+    Route::get('/branch-search',           [App\Http\Controllers\Admin\BranchController::class,         'dataAjax'])->name('admin.search.branch');
     Route::get('/course-search',           [App\Http\Controllers\Admin\CourseController::class,         'dataAjax'])->name('admin.search.courses');
     Route::get('/promo-folders-search',    [App\Http\Controllers\Admin\PromoFolderController::class,    'dataAjax'])->name('admin.search.promoFolders');
     Route::get('/course-categories-search',[App\Http\Controllers\Admin\CourseCategoryController::class, 'dataAjax'])->name('admin.search.courseCategories');
@@ -180,3 +226,5 @@ Route::group([
     Route::get('/permissions-search',      [App\Http\Controllers\Admin\RoleController::class,           'permissionAjax'])->name('admin.search.permissions');
     
 });
+
+/******************** End Admin routes ******************/

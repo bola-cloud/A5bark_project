@@ -1,0 +1,37 @@
+<?php 
+return [
+    'ar_title_required' => 'Arabic title is required.',
+    'en_title_required' => 'English title is required.',
+    'Create Title' => 'Create Title',
+    'Ar Title' => 'Arabic Title',
+    'En Title' => 'English Title',
+    'Video link' => 'Video Link',
+    'Episode number' => 'Episode Number',
+    'video time' => 'Video Time',
+    'Episode ar_description' => 'Episode Arabic Description',
+    'Ar Content' => 'Arabic Content',
+    'En description' => 'English Description',
+    'Select Category' => 'Select Category',
+    'Create Title' => 'Create Title',
+    'Ar Title' => 'Arabic Title',
+    'En Title' => 'English Title',
+    'Image' => 'Image',
+    'Select Category' => 'Select Category',
+    'Location' => 'Location',
+    'Price' => 'Price',
+    'Start Date' => 'Start Date',
+    'media'=>'media',
+    'News Categories Adminstration' => 'News Categories Adminstration',
+    'News Categories' => 'News Categories',
+    'En Head'=>'Small description',
+    'Ar Head'=>'Small description',
+
+    'Ar Name' => 'Arabic Name',
+    'En Name' => 'English Name',
+    'Active' => 'Active',
+    'Actions' => 'Actions',
+    'ar_name_required' => 'Arabic name is required',
+    'en_name_required' => 'English name is required',
+    
+
+];

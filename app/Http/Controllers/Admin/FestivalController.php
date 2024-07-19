@@ -155,11 +155,16 @@ class FestivalController extends Controller
     }
 
     private function activateNews(Festival $news) {
-        $news->is_active = !$news->is_active;
+        // Deactivate any currently active festival
+        Festival::where('is_active', 1)->update(['is_active' => 0]);
+    
+        // Activate the selected festival
+        $news->is_active = 1;
         $news->save();
-
+    
         return $this->responseTemplate($news, true, __('news.object_updated'));
     }
+    
 
     public function dataAjax(Request $request) {
     	$data = [];

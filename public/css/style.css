@@ -1,3 +1,12 @@
+
+a{
+    text-decoration: none !important;
+    font-weight:bold !important;
+}
+.btn-color.active {
+    background-color: #2a3167 !important;
+    color: white !important;
+}
 .navbar {
     background-color: #ffffff;
 }
@@ -99,10 +108,10 @@ ul.navbar-nav.ml-auto {
 .container-padding {
     padding: 7vh 7vh 0 7vh !important;
 }
-.section-background {
-    background: url('images/background.jpeg') no-repeat center center fixed;
-    background-size: cover;
+.container-padding-rl{
+    padding: 0 7vh 0 7vh !important;
 }
+
 .custom-section {
     padding: 2rem 0;
 }
@@ -252,7 +261,7 @@ ul.navbar-nav.ml-auto {
 
 .overlay-text-center {
     position: absolute;
-    bottom: 50%;
+    bottom: 61%;
     left: 50%;
     transform: translate(-50%, 50%);
     color: white;
@@ -263,6 +272,16 @@ ul.navbar-nav.ml-auto {
     position: absolute;
     bottom: 50%;
     left: 50%;
+    transform: translate(-50%, 50%);
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.overlay-text-btn {
+    position: absolute;
+    bottom: 38%;
+    left: 32%;
     transform: translate(-50%, 50%);
     color: white;
     text-align: center;
@@ -278,6 +297,59 @@ ul.navbar-nav.ml-auto {
     .container-padding{
         padding: 0 !important;
     }
+    .overlay-text-adv {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        color: white;
+        text-align: center;
+        top: 105px;
+        font-size:unset;
+    }
+    .overlay-text-btn {
+        position: absolute;
+        bottom: 10%;
+        left: 23%;
+        transform: translate(-50%, 50%);
+        color: white;
+        text-align: center;
+    }
+    ul.navbar-nav.ml-auto{
+        display: flex;
+        width: 100%;
+        font-size: larger;
+        font-weight: bolder;
+        color: #007bff !important;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    form.form-inline.ml-auto{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    ul.list-unstyled{
+        padding-right: 0;
+    }
+    .footer-50{
+        width: 50%;
+        text-align: center;
+    }
+    .card-container-padding{
+        padding: 0 !important;
+    }
+    .card-mobile{
+        margin: 0 !important;
+    }
+    .card-padding{
+        padding: 0 !important;
+    }
+    .concert-mobile{
+        margin: 0 !important;
+    }
+
 }
 
 .btn-border-adv{
@@ -335,3 +407,45 @@ ul.navbar-nav.ml-auto {
 /* .card-footer .btn i {
     font-size: 1.5rem;
 } */
+
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.news-text {
+    display: inline-block;
+    padding-right: 8%;
+    animation: ticker 15s linear infinite;
+    font-size: larger;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.news-span {
+    font-weight: bold;
+}
+
+.text-danger {
+    color: red;
+}
+
+.highlight {
+    font-weight: bold;
+}
+svg.w-5.h-5 {
+    height: 20px;
+}
+p.text-sm.text-gray-700.leading-5.dark\:text-gray-400 {
+    margin: 18px;
+}

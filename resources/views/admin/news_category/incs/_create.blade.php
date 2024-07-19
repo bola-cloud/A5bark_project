@@ -15,7 +15,7 @@
     <form action="/" id="objectForm">
         
         <div class="my-3 row">
-            <label for="name" class="col-sm-2 col-form-label">@lang('course_category.Name') <span class="text-danger float-right">*</span></label>
+            <label for="name" class="col-sm-2 col-form-label">@lang('news.Name') <span class="text-danger float-right">*</span></label>
             <div class="col-sm-10 row" style="direction: rtl">
                 <div class="col-6">
                     <input type="text" class="form-control custome-ar-field" id="ar_name" placeholder="أسم التصنيف بالعربية">
@@ -31,6 +31,6 @@
         </div><!-- /.my-3 -->
         
 
-        <button class="create-object btn btn-primary float-end mx-3">@lang('course_category.Create Title')</button>
+        <button class="create-object btn btn-primary float-end mx-3">@lang('layouts.Create Title')</button>
     </form>
 </div>

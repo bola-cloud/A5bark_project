@@ -6,7 +6,7 @@
 @endpush
 
 @push('title')
-    <h1 class="h2">@lang('layouts.Course Categories')</h1>
+    <h1 class="h2">@lang('layouts.Episodes')</h1>
 @endpush
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 pt-1">
-                    @lang('course_category.Title Adminstration')
+                    @lang('episodes.Title Adminstration')
                 </div><!-- /.col-6 -->
                 <div class="col-6 text-end">
                     
@@ -44,13 +44,13 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('course_category.Ar Title')</th>
-                        <th>@lang('course_category.En Title')</th>
-                        <th>@lang('course_category.Ar description')</th>
-                        <th>@lang('course_category.En description')</th>
-                        <th>@lang('course_category.number')</th>
-                        <th>@lang('course_category.time')</th>
-                        <th>@lang('course_category.playlist')</th>
+                        <th>@lang('episodes.Ar Title')</th>
+                        <th>@lang('episodes.En Title')</th>
+                        <th>@lang('episodes.Ar description')</th>
+                        <th>@lang('episodes.En description')</th>
+                        <th>@lang('episodes.number')</th>
+                        <th>@lang('episodes.time')</th>
+                        <th>@lang('episodes.playlist')</th>
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
                     </tr>

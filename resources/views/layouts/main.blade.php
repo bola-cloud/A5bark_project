@@ -8,6 +8,23 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <style>
+        @font-face {
+            font-family: 'Janna LT';
+            src: url('{{asset('Janna LT Bold.ttf')}}') format('woff2'),
+                url('path-to-fonts/janna-lt.woff') format('woff');
+            /* Add additional formats as needed */
+            font-weight: normal;
+            font-style: normal;
+        }
+        .section-background {
+            background: url('{{ asset('images/background.jpeg') }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+        body{
+            font-family: 'Janna LT' !important ;
+        }
+    </style>
 </head>
 <body>
 
@@ -24,10 +41,10 @@
                     <a class="nav-link" href="{{route('front_home')}}">الصفحة الرئيسية</a>
                 </li>
                 <li class="nav-item mr-4 ml-4">
-                    <a class="nav-link" href="">الفعاليات</a>
+                    <a class="nav-link" href="{{route('festival')}}">الفعاليات</a>
                 </li>
                 <li class="nav-item mr-4 ml-4">
-                    <a class="nav-link" href="#">الأخبار</a>
+                    <a class="nav-link" href="{{route('news')}}">الأخبار</a>
                 </li>
                 <li class="nav-item mr-4 ml-4">
                     <a class="nav-link" href="#">تواصل معنا</a>
@@ -57,11 +74,17 @@
                     <a class="custom-button" href="{{ route('login') }}">تسجيل دخول</a>
                 @else
                 <p class="mr-3 ml-3 mt-3">{{Auth::user()->name}}</p>
-                <a class="custom-button" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    @lang('layouts.Logout') 
-                </a>
+                <div>
+                    <a class="custom-button" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        @lang('layouts.Logout') 
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+                
                 @endif
             </form>
         </div>
@@ -112,7 +135,7 @@
 
                     </p>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 footer-50">
                     <h5>الرئيسية</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">الفعاليات</a></li>
@@ -121,7 +144,7 @@
                         <li><a href="#">تواصل معنا</a></li>
                     </ul>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 footer-50">
                     <h5>عنا</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">المؤسسة</a></li>

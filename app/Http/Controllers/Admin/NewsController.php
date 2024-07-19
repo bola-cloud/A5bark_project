@@ -140,7 +140,7 @@ class NewsController extends Controller
             'en_title' => 'required|max:255',
             'en_content' => 'required',
             'news_category_id' => 'nullable|exists:news_categories,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable',
         ], [
             'ar_head.required' => __('news.ar_head_required'),
             'ar_title.required' => __('news.ar_title_required'),

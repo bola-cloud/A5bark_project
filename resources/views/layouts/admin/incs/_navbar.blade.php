@@ -73,7 +73,43 @@
                 </a>
             </li>
             @endif
+
+            @if( $user_category == 'admin' || auth()->user()->isAbleTo('dashboard_*') )
+            <li class="nav-item">
+                <a class="nav-link {{ str_ends_with(Request::path(), 'motion') ? 'active' : ''}}" aria-current="page2" href="{{ route('admin.motion.index') }}">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="mx-1">@lang('layouts.motion')</span>
+                </a>
+            </li>
+            @endif
             
+            @if( $user_category == 'admin' || auth()->user()->isAbleTo('dashboard_*') )
+            <li class="nav-item">
+                <a class="nav-link {{ str_ends_with(Request::path(), 'adverticement') ? 'active' : ''}}" aria-current="page2" href="{{ route('admin.adverticement.index') }}">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="mx-1">@lang('layouts.adverticement')</span>
+                </a>
+            </li>
+            @endif
+
+            @if( $user_category == 'admin' || auth()->user()->isAbleTo('dashboard_*') )
+            <li class="nav-item">
+                <a class="nav-link {{ str_ends_with(Request::path(), 'branch') ? 'active' : ''}}" aria-current="page2" href="{{ route('admin.branch.index') }}">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="mx-1">@lang('layouts.branches')</span>
+                </a>
+            </li>
+            @endif
+
+            @if( $user_category == 'admin' || auth()->user()->isAbleTo('dashboard_*') )
+            <li class="nav-item">
+                <a class="nav-link {{ str_ends_with(Request::path(), 'places') ? 'active' : ''}}" aria-current="page2" href="{{ route('admin.places.index') }}">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="mx-1">@lang('layouts.places')</span>
+                </a>
+            </li>
+            @endif
+
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="file-text" class="align-text-bottom"></span>

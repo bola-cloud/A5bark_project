@@ -8,158 +8,46 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="{{ asset('images/1440 px web poster-01.png') }}" alt="Sports" class="w-100">
+                        <img src="{{ asset('media/'.$festival[0]->media) }}" alt="Sports" class="w-100 h-100">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="card-container-padding">
-        <div class="row m-5">
-            <div class="col-md-4 mt-5">
-                <a href="{{route('concert')}}">
-                    <div class="card card-custom">
-                        <img src="{{ asset('images/صور/New folder/Rectangle 3533.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">ندوة ثقافية</h5>
-                                <p class="text-muted"><i class="fas fa-map-marker-alt icon"></i>البوسكو-بنغازى</p>
+        <div class="row m-5 card-mobile">
+            @foreach ($events as $event)
+                <div class="col-md-4 mt-5">
+                    <a href="{{route('event_details',$event->id)}}">
+                        <div class="card card-custom">
+                            <img src="{{ asset('media/'.$event->image) }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p class="text-muted text-justify"><i class="fas fa-map-marker-alt icon"></i>البوسكو-بنغازى</p>
+                                    <a href="#" class="btn btn-custom">زيارة الموقع الالكترونى</a>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title mt-3 text-justify">ندوة ثقافية</h5>
+                                    <div class="mt-3 text-justify">
+                                        <i class="fas fa-share-alt icon"></i> مشاركة
+                                    </div>
+                                </div>
                             </div>
-                            <p class="card-text">زيارة الموقع الالكترونى</p>
-                            <a href="#" class="btn btn-custom">زيارة الموقع الالكترونى</a>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-share-alt icon"></i> مشاركة
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
-                                <i class="far fa-calendar-alt icon ml-3"></i> 30 يونيو 2024
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mt-5">
-                <a href="{{route('concert')}}">
-                    <div class="card card-custom">
-                        <img src="{{ asset('images/صور/New folder/Rectangle 4507.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">ندوة ثقافية</h5>
-                                <p class="text-muted"><i class="fas fa-map-marker-alt icon"></i>البوسكو-بنغازى</p>
-                            </div>
-                            <p class="card-text">زيارة الموقع الالكترونى</p>
-                            <a href="#" class="btn btn-custom">زيارة الموقع الالكترونى</a>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-share-alt icon"></i> مشاركة
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
-                                <i class="far fa-calendar-alt icon ml-3"></i> 30 يونيو 2024
+                            <div class="card-footer d-flex justify-content-between align-items-center">
+
+                                <div class="d-flex align-items-center">
+                                    <div class="text-end ml-4">
+                                        <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
+                                    </div>
+                                    <div class="text-start mr-3">
+                                        <i class="far fa-calendar-alt icon ml-4"></i>30 يونيو 2024
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mt-5">
-                <a href="{{route('concert')}}">
-                    <div class="card card-custom">
-                        <img src="{{ asset('images/صور/New folder/Rectangle 3529.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">ندوة ثقافية</h5>
-                                <p class="text-muted"><i class="fas fa-map-marker-alt icon"></i>البوسكو-بنغازى</p>
-                            </div>
-                            <p class="card-text">زيارة الموقع الالكترونى</p>
-                            <a href="#" class="btn btn-custom">زيارة الموقع الالكترونى</a>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-share-alt icon"></i> مشاركة
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
-                                <i class="far fa-calendar-alt icon ml-3"></i> 30 يونيو 2024
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mt-5">
-                <a href="{{route('concert')}}">
-                    <div class="card card-custom">
-                        <img src="{{ asset('images/صور/New folder/Rectangle 3527.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">ندوة ثقافية</h5>
-                                <p class="text-muted"><i class="fas fa-map-marker-alt icon"></i>البوسكو-بنغازى</p>
-                            </div>
-                            <p class="card-text">زيارة الموقع الالكترونى</p>
-                            <a href="#" class="btn btn-custom">زيارة الموقع الالكترونى</a>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-share-alt icon"></i> مشاركة
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
-                                <i class="far fa-calendar-alt icon ml-3"></i> 30 يونيو 2024
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mt-5">
-                <a href="{{route('concert')}}">
-                    <div class="card card-custom">
-                        <img src="{{ asset('images/صور/New folder/Rectangle 3525.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">ندوة ثقافية</h5>
-                                <p class="text-muted"><i class="fas fa-map-marker-alt icon"></i>البوسكو-بنغازى</p>
-                            </div>
-                            <p class="card-text">زيارة الموقع الالكترونى</p>
-                            <a href="#" class="btn btn-custom">زيارة الموقع الالكترونى</a>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-share-alt icon"></i> مشاركة
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
-                                <i class="far fa-calendar-alt icon ml-3"></i> 30 يونيو 2024
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mt-5">
-                <a href="{{route('concert')}}">
-                    <div class="card card-custom">
-                        <img src="{{ asset('images/صور/New folder/Rectangle 3531.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">ندوة ثقافية</h5>
-                                <p class="text-muted"><i class="fas fa-map-marker-alt icon"></i>البوسكو-بنغازى</p>
-                            </div>
-                            <p class="card-text">زيارة الموقع الالكترونى</p>
-                            <a href="#" class="btn btn-custom">زيارة الموقع الالكترونى</a>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-share-alt icon"></i> مشاركة
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
-                                <i class="far fa-calendar-alt icon ml-3"></i> 30 يونيو 2024
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

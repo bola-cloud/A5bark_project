@@ -6,7 +6,7 @@
 @endpush
 
 @push('title')
-    <h1 class="h2">@lang('layouts.Course Categories')</h1>
+    <h1 class="h2">@lang('festival.Festivals')</h1>
 @endpush
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 pt-1">
-                    @lang('course_category.Title Adminstration')
+                    @lang('festival.Festival Administration')
                 </div><!-- /.col-6 -->
                 <div class="col-6 text-end">
                     
@@ -44,10 +44,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('course_category.Ar Title')</th>
-                        <th>@lang('course_category.En Title')</th>
-                        <th>@lang('course_category.location')</th>
-                        <th>@lang('course_category.start_date')</th>
+                        <th>@lang('news.Ar Title')</th>
+                        <th>@lang('news.En Title')</th>
+                        <th>@lang('festival.location')</th>
+                        <th>@lang('festival.start_date')</th>
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
                     </tr>

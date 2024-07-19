@@ -27,7 +27,32 @@ return [
     'Tracks'                => 'Tracks',
     'Track Courses'         => 'Track Courses',
     'Grades Groups'         => 'Grades Groups',
+    'Episodes'              => 'Episodes ',
+    'branches'              => 'Branch',
+    'places'                => 'Places',
+    'Brach Places'          =>'Brach Places',
 
+    'News_category' => 'News Category',
+    'News' => 'News',
+    'festival' => 'Festival',
+    'playlist' => 'Playlist',
+    'episodes' => 'Episodes',
+    'event' => 'Event',
+    'Create Title'=>'Create',
+    'motion'=>'Motion',
+    'adverticement'=>'Adverticement',
+
+
+    //event
+    'Events' => 'events',
+    'Title Adminstration' => 'Title Administration',
+    'Ar Head' => 'Arabic Head',
+    'Ar Title' => 'Arabic Title',
+    'Ar Content' => 'Arabic Content',
+    'En Head' => 'English Head',
+    'En Title' => 'English Title',
+    'En Content' => 'English Content',
+    'Category' => 'Category',
     // Permissions
     'has_no_permissions'    => 'This account has no permission for this page',
     

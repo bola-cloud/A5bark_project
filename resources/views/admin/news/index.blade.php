@@ -44,12 +44,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('course_category.Ar Head')</th>
-                        <th>@lang('course_category.Ar Title')</th>
-                        <th>@lang('course_category.Ar Content')</th>
-                        <th>@lang('course_category.En Head')</th>
-                        <th>@lang('course_category.En Title')</th>
-                        <th>@lang('course_category.En Content')</th>
+                        <th>@lang('news.Ar Head')</th>
+                        <th>@lang('news.Ar Title')</th>
+                        {{-- <th>@lang('course_category.Ar Content')</th> --}}
+                        <th>@lang('news.En Head')</th>
+                        <th>@lang('news.En Title')</th>
+                        {{-- <th>@lang('course_category.En Content')</th> --}}
                         <th>@lang('news.Category')</th>
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
@@ -106,10 +106,10 @@
                 { data: 'id', name: 'id' },
                 { data: 'ar_head', name: 'ar_head' },
                 { data: 'ar_title', name: 'ar_title' },
-                { data: 'ar_content', name: 'ar_content' },
+                // { data: 'ar_content', name: 'ar_content' },
                 { data: 'en_head', name: 'en_head' },
                 { data: 'en_title', name: 'en_title' },
-                { data: 'en_content', name: 'en_content' },
+                // { data: 'en_content', name: 'en_content' },
                 { data: 'news_category_name', name: 'news_category_name' },
                 { data: 'activation', name: 'activation' },
                 { data: 'actions', name: 'actions' },

@@ -14,16 +14,16 @@
     <form action="/" id="objectForm" enctype="multipart/form-data">
         
         <div class="my-3 row">
-            <label for="ar_title" class="col-sm-2 col-form-label">@lang('festival.ar_title')</label>
+            <label for="ar_title" class="col-sm-2 col-form-label">@lang('news.ar_title')</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="ar_title" placeholder="@lang('festival.ar_title')">
+                <input type="text" class="form-control" id="ar_title" placeholder="@lang('news.ar_title')">
             </div>
         </div>
 
         <div class="my-3 row">
-            <label for="en_title" class="col-sm-2 col-form-label">@lang('festival.en_title')</label>
+            <label for="en_title" class="col-sm-2 col-form-label">@lang('news.en_title')</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="en_title" placeholder="@lang('festival.en_title')">
+                <input type="text" class="form-control" id="en_title" placeholder="@lang('news.en_title')">
             </div>
         </div>
 
@@ -35,9 +35,9 @@
         </div>
 
         <div class="my-3 row">
-            <label for="media" class="col-sm-2 col-form-label">@lang('festival.media') <span class="text-danger float-right">*</span></label>
+            <label for="media" class="col-sm-2 col-form-label">@lang('news.media') <span class="text-danger float-right">*</span></label>
             <div class="col-sm-10">
-                <input type="file" class="form-control" id="media" placeholder="@lang('festival.media')" accept="images/*">
+                <input type="file" class="form-control" id="media" placeholder="@lang('news.media')" accept="images/*">
                 <div style="padding: 5px 7px; display: none" id="mediaErr" class="err-msg mt-2 alert alert-danger"></div>
             </div>
         </div>

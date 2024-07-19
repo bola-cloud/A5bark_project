@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('en_title'); 
             $table->string('image');
             $table->string('location');
-            $table->date('date');
+            $table->timestamp('date');
             $table->string('day')->nullable();
             $table->integer('price')->nullable();
             $table->unsignedBigInteger('festival_id')->nullable();

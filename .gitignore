@@ -3,6 +3,8 @@
 /public/hot
 /public/storage
 /public/media
+/public/images
+/public/static_images
 /public/media/*
 /storage/*.key
 /vendor

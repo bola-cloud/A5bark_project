@@ -44,12 +44,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('course_category.Ar Title')</th>
-                        <th>@lang('course_category.En Title')</th>
-                        <th>@lang('course_category.spotify_link')</th>
-                        <th>@lang('course_category.spotify_link')</th>
-                        <th>@lang('course_category.spotify_link')</th>
-                        <th>@lang('course_category.spotify_link')</th>
+                        <th>@lang('news.Ar Title')</th>
+                        <th>@lang('news.En Title')</th>
+                        <th>@lang('festival.sound_link')</th>
+                        <th>@lang('festival.spotify_link')</th>
+                        <th>@lang('festival.tiktok_link')</th>
+                        <th>@lang('festival.youtube_link')</th>
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
                     </tr>
