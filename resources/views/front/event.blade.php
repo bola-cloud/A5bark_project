@@ -37,12 +37,14 @@
 
                                 <div class="d-flex align-items-center">
                                     <div class="text-end ml-4">
-                                        <i class="far fa-clock icon"></i> 1 ساعة و 30 دقيقة
+                                        <i class="far fa-clock icon"></i>
+                                        {{ $event->diffInHours }} ساعة و {{ $event->diffInMinutes }} دقيقة
                                     </div>
                                     <div class="text-start mr-3">
-                                        <i class="far fa-calendar-alt icon ml-4"></i>30 يونيو 2024
+                                        <i class="far fa-calendar-alt icon ml-4"></i>{{ $event->formattedDate }}
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </a>

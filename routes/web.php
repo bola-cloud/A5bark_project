@@ -27,13 +27,11 @@ Route::get('/front/playlist', [App\Http\Controllers\Front\ProdcastController::cl
 Route::get('/front/festival', [App\Http\Controllers\Front\FestivalController::class , 'index'])->name('festival');
 Route::get('/front/festival/event/{event}', [App\Http\Controllers\Front\FestivalController::class , 'event'])->name('event_details');
 Route::get('/', [App\Http\Controllers\Front\HomeController::class , 'index'])->name('front_home');
+Route::get('/front/festival/event/branch/{branch}', [App\Http\Controllers\Front\FestivalController::class , 'branch'])->name('branch_details');
 
 
 
 
-Route::get('/branch', function () {
-    return view('front.branch');
-})->name('branch');
 Route::get('/adverticement', function () {
     return view('front.adverticement');
 })->name('adverticement');
@@ -219,7 +217,7 @@ Route::group([
     Route::get('/festival-search',         [App\Http\Controllers\Admin\FestivalController::class,       'dataAjax'])->name('admin.search.festival');
     Route::get('/branch-search',           [App\Http\Controllers\Admin\BranchController::class,         'dataAjax'])->name('admin.search.branch');
     Route::get('/course-search',           [App\Http\Controllers\Admin\CourseController::class,         'dataAjax'])->name('admin.search.courses');
-    Route::get('/promo-folders-search',    [App\Http\Controllers\Admin\PromoFolderController::class,    'dataAjax'])->name('admin.search.promoFolders');
+    Route::get('/events-search',    [App\Http\Controllers\Admin\EventsController::class,    'dataAjax'])->name('admin.search.event');
     Route::get('/course-categories-search',[App\Http\Controllers\Admin\CourseCategoryController::class, 'dataAjax'])->name('admin.search.courseCategories');
     Route::get('/wallets-users-search',    [App\Http\Controllers\Admin\UserController::class,           'dataWalletUserAjax'])->name('admin.search.users');
     Route::get('/roles-search',            [App\Http\Controllers\Admin\RoleController::class,           'roleAjax'])->name('admin.search.roles');

@@ -37,6 +37,16 @@
             </div>
         </div><!-- /.my-3 -->
 
+        <div class="my-3 row">
+            <label for="event_id" class="col-sm-2 col-form-label">@lang('news.Category')</label>
+            <div class="col-sm-10">
+                <select class="form-control select2 w-100" id="event_id" name="event_id">
+                    <option value="">@lang('news.Select Category')</option>
+                </select>
+                <div style="padding: 5px 7px; display: none" id="event_idErr" class="err-msg mt-2 alert alert-danger"></div>
+            </div>
+        </div><!-- /.my-3 -->
+
 
         <button class="create-object btn btn-primary float-end mx-3">@lang('news.Create Title')</button>
     </form>

@@ -14,7 +14,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 pt-1">
-                    @lang('course_category.Title Adminstration')
+                    @lang('layouts.Places')
                 </div><!-- /.col-6 -->
                 <div class="col-6 text-end">
                     

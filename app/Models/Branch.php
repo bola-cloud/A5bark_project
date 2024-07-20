@@ -13,11 +13,17 @@ class Branch extends Model
         'en_name',
         'image',
         'is_active',
+        'event_id',
     ];
 
     public function places()
     {
         return $this->hasMany(Place::class,'branch_id');
+    }
+    
+    public function event()
+    {
+        return $this->belongsTo(Event::class,'event_id');
     }
 
     public function scopeAdminFilter($query) {

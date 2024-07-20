@@ -6,7 +6,7 @@
 @endpush
 
 @push('title')
-    <h1 class="h2">@lang('layouts.Course Categories')</h1>
+    <h1 class="h2">@lang('layouts.Motion')</h1>
 @endpush
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 pt-1">
-                    @lang('course_category.Title Adminstration')
+                    @lang('layouts.Motion Adminstration')
                 </div><!-- /.col-6 -->
                 <div class="col-6 text-end">
                     

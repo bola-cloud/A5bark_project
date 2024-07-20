@@ -66,34 +66,15 @@
                             <h2 class="d-flex pr-5 pl-5"> اماكن بيع التذاكر </h2>
                             <br>
                             <div class="row">
+                                @foreach ($event->branch as $branch)
                                 <div class="col-md-3">
-                                    <a href="{{route('branch')}}">
-                                        <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
+                                    <a href="{{route('branch_details',$branch->id)}}">
+                                        <img src="{{ asset('media/'.$branch->image) }}" class="w-100">
                                         <br>
-                                        <p class="d-flex"> فوري </p>
+                                        <p class="d-flex"> {{$branch->ar_name}} </p>
                                     </a>
                                 </div>
-                                <div class="col-md-3">
-                                    <a href="{{route('branch')}}">
-                                        <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
-                                        <br>
-                                        <p class="d-flex"> فوري </p>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="{{route('branch')}}">
-                                        <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
-                                        <br>
-                                        <p class="d-flex"> فوري </p>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="{{route('branch')}}">
-                                        <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
-                                        <br>
-                                        <p class="d-flex"> فوري </p>
-                                    </a>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

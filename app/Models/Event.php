@@ -23,9 +23,9 @@ class Event extends Model
     {
         return $this->belongsTo(Festival::class,'festival_id');
     }
-    public function place()
+    public function branch()
     {
-        return $this->belongsToMany(Places::class,'place_events','event_id','place_id');
+        return $this->hasMany(Branch::class,'event_id');
     }
     public function scopeAdminFilter($query) {
         if (request()->filled('name')) {

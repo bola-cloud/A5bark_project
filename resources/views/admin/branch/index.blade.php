@@ -6,7 +6,7 @@
 @endpush
 
 @push('title')
-    <h1 class="h2">@lang('layouts.Course Categories')</h1>
+    <h1 class="h2">@lang('layouts.Branches')</h1>
 @endpush
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 pt-1">
-                    @lang('course_category.Title Adminstration')
+                    @lang('layouts.Branches Adminstration')
                 </div><!-- /.col-6 -->
                 <div class="col-6 text-end">
                     
@@ -46,6 +46,7 @@
                         <th>#</th>
                         <th>@lang('news.Ar Name')</th>
                         <th>@lang('news.En Name')</th>
+                        <th>@lang('layouts.Events')</th>
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
                     </tr>
@@ -101,6 +102,7 @@
                 { data: 'id', name: 'id' },
                 { data: 'ar_name', name: 'ar_name' },
                 { data: 'en_name', name: 'en_name' },
+                { data: 'event_name', name: 'event_name' },
                 { data: 'activation', name: 'activation' },
                 { data: 'actions', name: 'actions' },
             ],
@@ -145,6 +147,7 @@
                 keys.forEach(key => {
                     $(`#show-${key}`).val(data[key]);
                 });
+                $('#show-event_id').val(data.event_id).trigger('change');
 
                 if (data.image) {
                     $('#show-image').attr('src', data.image).show();
@@ -177,6 +180,33 @@
                 $(`#${prefix + el_id}`).val(Boolean(data[el_id]) ? data[el_id] : '').change();
             });
         };
+
+        $('#event_id, #edit-event_id').select2({
+            ajax: {
+                url: "{{ route('admin.search.event') }}",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term // search term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data.map(function (item) {
+                            return {
+                                id: item.id,
+                                text: item.ar_title + ' / ' + item.en_title
+                            };
+                        })
+                    };
+                },
+                cache: true
+            },
+            placeholder: '@lang('news.Select Category')',
+            minimumInputLength: 1,
+            width: "100%"
+        });
 
     });
     

@@ -30,9 +30,14 @@ class BranchController extends Controller
 
         if ($request->ajax()) {
             $model = $this->targetModel->query()
+                ->with('event')
                 ->adminFilter();
 
             $datatableModel = Datatables::of($model)
+
+                ->addColumn('event_name', function ($row) {
+                    return $row->event ? $row->event->ar_title . ' / ' . $row->event->en_title : '';
+                })
                 ->addColumn('activation', function ($row_object) use ($permissions) {
                     return view('admin.branch.incs._active', compact('row_object', 'permissions'));
                 })
@@ -51,7 +56,8 @@ class BranchController extends Controller
         $validator = Validator::make($request->all(), [
             'ar_name' => 'required|max:255',
             'en_name' => 'required|max:255',
-            'image' => 'required',
+            'image' => 'required|max:2048',
+            'event_id' =>'required',
         ], [
             'ar_head.required' => __('news.ar_head_required'),
             'ar_name.required' => __('news.ar_name_required'),
@@ -86,7 +92,7 @@ class BranchController extends Controller
     
 
     public function show($id) {
-        $news = $this->targetModel->find($id);
+        $news = $this->targetModel->with(['event'])->find($id);
 
         if (!isset($news)) {
             return $this->responseTemplate(null, false, __('news.object_not_found'));

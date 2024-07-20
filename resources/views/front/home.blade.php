@@ -91,7 +91,7 @@
 
                 <div class="row custom-section">
                     <div class="col-lg-6 order-lg-2">
-                        <img src="{{ asset('media/'.$news[0]->image) }}" class="img-fluid" alt="Responsive Image">
+                        <img src="{{ asset('media/'.$news[0]->image) }}" class="img-fluid" alt="Responsive Image" style="max-height: 608px;">
                     </div>
                     <div class="col-lg-6 order-lg-1 d-flex flex-column justify-content-center">
                         <h2 class="text-justify">{{$news[0]->newsCategory->ar_name}}</h2>

@@ -35,60 +35,50 @@
             <div class="col-md-12 p-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" style="max-height: 80vh;" class="w-100">
+                        <img src="{{ asset('media/'.$target_branch->image) }}" style="max-height: 80vh;" class="w-100">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row mt-5 d-flex justify-content-center">
-        <div class="col-md-2 text-center blue-color">
-            <h2> الفرع </h2> <br>
-            <p> مصر الجديدة </p>
-            <p> مصر الجديدة </p>
-            <p> مصر الجديدة </p>
-            <p> مصر الجديدة </p>
+        <div class="col-md-9">
+            <table class="table blue-color">
+                <thead>
+                    <tr>
+                        <th scope="col text-justify">اسم الفرع</th>
+                        <th scope="col text-justify"> العنوان</th>
+                        <th scope="col text-justify">مواعيد العمل </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($target_branch->places as $place)
+                    <tr>
+                        <td> {{$place->ar_name}} </td>
+                        <td> {{$place->address}}</td>
+                        <td>{{$place->working_hours}} </td>
+                    </tr>
+                    @endforeach
+                   
+                </tbody>
+            </table>
         </div>
-        <div class="col-md-4 text-center blue-color">
-            <h2> العنوان </h2> <br>
-            <p> مول زمردة - نادى دار الإشارة الماظة - مدينة نصر</p>
-            <p>مول زمردة - نادى دار الإشارة الماظة - مدينة نصر</p>
-            <p> مول زمردة - نادى دار الإشارة الماظة - مدينة نصر</p>
-            <p> مول زمردة - نادى دار الإشارة الماظة - مدينة نصر </p>
-        </div>
-        <div class="col-md-3 text-center blue-color">
-            <h2> مواعيد العمل </h2> <br>
-            <p> من السبت إلى الخميس من الساعة 12 ظهراً حتى 9:30 مساءً / الجمعة: 2 ظهراً حتى 9:30 مساءً</p>
-            <p> من السبت إلى الخميس من الساعة 12 ظهراً حتى 9:30 مساءً / الجمعة: 2 ظهراً حتى 9:30 مساءً</p>
-            <p> من السبت إلى الخميس من الساعة 12 ظهراً حتى 9:30 مساءً / الجمعة: 2 ظهراً حتى 9:30 مساءً</p>
-            <p> من السبت إلى الخميس من الساعة 12 ظهراً حتى 9:30 مساءً / الجمعة: 2 ظهراً حتى 9:30 مساءً</p>
-        </div>
+      
     </div>
     <div class="row mt-5 container-padding">
         <div class="col-md-12 mt-5">
             <h2 class="d-flex pr-5 pl-5"> اماكن بيع التذاكر </h2>
             <br>
             <div class="row">
+                @foreach ($branches as $branch)
                 <div class="col-md-3">
-                    <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
-                    <br>
-                    <p class="d-flex"> فوري </p>
+                    <a href="{{route('branch_details',$branch->id)}}">
+                        <img src="{{ asset('media/'.$branch->image) }}" class="w-100">
+                        <br>
+                        <p class="d-flex"> {{$branch->ar_name}} </p>
+                    </a>
                 </div>
-                <div class="col-md-3">
-                    <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
-                    <br>
-                    <p class="d-flex"> فوري </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
-                    <br>
-                    <p class="d-flex"> فوري </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="{{ asset('images/صور/New folder/Rectangle 4495.png') }}" class="w-100">
-                    <br>
-                    <p class="d-flex"> فوري </p>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

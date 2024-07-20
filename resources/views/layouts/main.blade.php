@@ -29,8 +29,8 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand d-flex justify-content-center" href="#">
-            <img src="{{asset('images/Asset 2.svg')}}" style="height: 40px;" alt="Logo">
+        <a class="navbar-brand d-flex justify-content-center" href="{{route('front_home')}}">
+            <img src="{{asset('images/new images/Asset 2.svg')}}" style="height: 55px;padding-right: 90px;" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,7 +54,7 @@
                 </li>
                 <img src="{{asset('images/Asset 1 (1).svg')}}" alt="" class="img-height mr-2 ml-2">
             </ul>
-            <form class="form-inline ml-auto">
+            <div class="form-inline" style="margin-left: 90px !important;">
                 <button class="search-button ml-3">
                     <i class="fas fa-search"></i>
                 </button>
@@ -68,25 +68,29 @@
                     </div>
                 </div>
                 @if (!Auth::check())
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li> --}}
                     <a class="custom-button" href="{{ route('login') }}">تسجيل دخول</a>
                 @else
-                <p class="mr-3 ml-3 mt-3">{{Auth::user()->name}}</p>
-                <div>
-                    <a class="custom-button" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                        @lang('layouts.Logout') 
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-                
+                    <div class="dropdown">
+                        <button class="custom-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @if (Auth::user()->category == 'admin')
+                                <a class="dropdown-item" href="{{ route('admin.dashboard.index') }}">Admin Dashboard</a>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                @lang('layouts.Logout')
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
                 @endif
-            </form>
+
+            </div>
         </div>
     </nav>
 

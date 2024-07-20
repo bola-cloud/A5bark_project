@@ -11,6 +11,7 @@ use App\Models\Event;
 use App\Http\Traits\ResponseTemplate;
 use Illuminate\Support\Facades\Storage;
 use LaravelLocalization;
+use Carbon\Carbon;
 
 class EventsController extends Controller
 {
@@ -162,6 +163,23 @@ class EventsController extends Controller
         }
     
         return $this->responseTemplate($news, true, __('news.object_updated'));
+    }
+
+    public function dataAjax(Request $request) {
+    	$data = [];
+        if($request->has('q')){
+            $search = $request->q;
+
+            $model = $this->targetModel->query()
+            ->where('is_active', 1);
+
+            $data = $model->where(function ($q) use ($request) {
+                $q->orWhere('ar_title', 'like', "%$request->q%");
+                $q->orWhere('en_title', 'like', "%$request->q%");
+            })->get();
+        }
+
+        return response()->json($data);
     }
 
     private function activateNews(Event $news) {
