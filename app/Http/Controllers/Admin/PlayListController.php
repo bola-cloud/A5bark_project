@@ -138,7 +138,7 @@ class PlayListController extends Controller
         $validator = Validator::make($request->all(), [
             'ar_title' => 'required|max:255',
             'en_title' => 'required|max:255',
-            'image' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'max:2048',
             'sound_link' => 'nullable|url',
             'spotify_link' => 'nullable|url',
             'titok_link' => 'nullable|url',

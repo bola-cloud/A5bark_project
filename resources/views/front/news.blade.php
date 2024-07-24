@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <div class="card-title row">
                             <h5 class="col-md-6 blue-color text-justify"> {{$new->ar_title}} </h5>
-                            <div class="time-indicator col-md-6 p-0">
+                            <div class="time-indicator col-md-6 pl-3">
                                 <i class="far fa-clock"></i>
                                 <span>{{ $new->created_at->diffForHumans(null, false, false, 2) }}</span>
                             </div>

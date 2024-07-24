@@ -154,7 +154,7 @@
             let keys = ['en_title', 'ar_title', 'ar_description', 'en_description', 'playlist_id','time',
                         'number', 'sound_link', 'spotify_link','titok_link','youtube_link', 'video'];
 
-            let response = await axios.get(`{{ url('admin/playlist') }}/${target_id}`);
+            let response = await axios.get(`{{ url('admin/episodes') }}/${target_id}`);
             
             let { data, success, msg } = response.data;
             console.log(data)
@@ -230,7 +230,7 @@
                 },
                 cache: true
             },
-            placeholder: '@lang('news.Select playliist')',
+            placeholder: '@lang('news.Select playlist')',
             minimumInputLength: 1,
             width: "100%"
         });

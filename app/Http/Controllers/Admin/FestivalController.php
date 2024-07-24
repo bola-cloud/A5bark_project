@@ -52,7 +52,7 @@ class FestivalController extends Controller
         $validator = Validator::make($request->all(), [
             'ar_title' => 'required|max:255',
             'en_title' => 'required|max:255',
-            'media' => '',
+            'media' => 'max:2048',
             'start_date' => 'nullable|date',
         ]);
     
@@ -120,7 +120,7 @@ class FestivalController extends Controller
 
     private function updateNews(Request $request, Festival $news) {
         $validator = Validator::make($request->all(), [
-           'ar_title' => 'required|max:255',
+            'ar_title' => 'required|max:255',
             'en_title' => 'required|max:255',
             'media' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048',
             'start_date'=> 'nullable||date',
@@ -137,7 +137,7 @@ class FestivalController extends Controller
 
             if ($request->hasFile('media')) {
                 if ($news->media) {
-                    Storage::disk('media')->delete($news->image);
+                    Storage::disk('media')->delete($news->media);
                 }
                 $data['media'] = $request->file('media')->store('festival_images', 'media');
             } else {

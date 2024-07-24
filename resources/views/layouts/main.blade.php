@@ -24,11 +24,80 @@
         body{
             font-family: 'Janna LT' !important ;
         }
+
+        
+
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light" @if(!Auth::check())style="padding-left: 65px;" @endif>
+        <a class="navbar-brand d-flex justify-content-center" href="{{route('front_home')}}">
+            <img src="{{asset('images/new images/Asset 2.svg')}}" style="height: 55px;padding-right: 90px;" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" id="sidebarToggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto d-none d-lg-flex">
+                <li class="nav-item mr-4 ml-4">
+                    <a class="nav-link" href="{{route('front_home')}}">الصفحة الرئيسية</a>
+                </li>
+                <li class="nav-item mr-4 ml-4">
+                    <a class="nav-link" href="{{route('festival')}}">الفعاليات</a>
+                </li>
+                <li class="nav-item mr-4 ml-4">
+                    <a class="nav-link" href="{{route('news')}}">الأخبار</a>
+                </li>
+                <li class="nav-item mr-4 ml-4">
+                    <a class="nav-link" href="#">تواصل معنا</a>
+                </li>
+                <li class="nav-item mr-4 ml-4">
+                    <a class="nav-link" href="#">أعمال المنصة</a>
+                </li>
+                <img src="{{asset('images/Asset 1 (1).svg')}}" alt="" class="img-height mr-2 ml-2">
+            </ul>
+            <div class="form-inline d-none d-lg-flex">
+                <button class="search-button ml-3">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="btn-group ml-3">
+                    <button class="language-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe"></i> <span class="m-2"> العربية</span> 
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">English</a>
+                        <a class="dropdown-item" href="#">Français</a>
+                    </div>
+                </div>
+                @if (!Auth::check())
+                    <a class="custom-button" href="{{ route('login') }}">تسجيل دخول</a>
+                @else
+                    <div class="dropdown">
+                        <button class="custom-button dropdown-toggle ml-5" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @if (Auth::user()->category == 'admin')
+                                <a class="dropdown-item" href="{{ route('admin.dashboard.index') }}">Admin Dashboard</a>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                @lang('layouts.Logout')
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </nav>
+
+    {{-- <nav class="navbar navbar-expand-lg navbar-light" @if(!Auth::check())style="padding-left: 65px;" @endif>
         <a class="navbar-brand d-flex justify-content-center" href="{{route('front_home')}}">
             <img src="{{asset('images/new images/Asset 2.svg')}}" style="height: 55px;padding-right: 90px;" alt="Logo">
         </a>
@@ -54,7 +123,7 @@
                 </li>
                 <img src="{{asset('images/Asset 1 (1).svg')}}" alt="" class="img-height mr-2 ml-2">
             </ul>
-            <div class="form-inline" style="margin-left: 90px !important;">
+            <div class="form-inline" >
                 <button class="search-button ml-3">
                     <i class="fas fa-search"></i>
                 </button>
@@ -68,10 +137,10 @@
                     </div>
                 </div>
                 @if (!Auth::check())
-                    <a class="custom-button" href="{{ route('login') }}">تسجيل دخول</a>
+                    <a class="custom-button"  href="{{ route('login') }}">تسجيل دخول</a>
                 @else
                     <div class="dropdown">
-                        <button class="custom-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="custom-button dropdown-toggle ml-5" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -92,7 +161,68 @@
 
             </div>
         </div>
-    </nav>
+    </nav> --}}
+    
+    <div class="sidebar d-lg-none" id="sidebar">
+        <div class="sidebar-header">
+            <button type="button" class="close" id="sidebarClose">&times;</button>
+        </div>
+        <ul class="navbar-nav">
+            <li class="nav-item mr-4 ml-4">
+                <a class="nav-link" href="{{route('front_home')}}">الصفحة الرئيسية</a>
+            </li>
+            <li class="nav-item mr-4 ml-4">
+                <a class="nav-link" href="{{route('festival')}}">الفعاليات</a>
+            </li>
+            <li class="nav-item mr-4 ml-4">
+                <a class="nav-link" href="{{route('news')}}">الأخبار</a>
+            </li>
+            <li class="nav-item mr-4 ml-4">
+                <a class="nav-link" href="#">تواصل معنا</a>
+            </li>
+            <li class="nav-item mr-4 ml-4">
+                <a class="nav-link" href="#">أعمال المنصة</a>
+            </li>
+            <img src="{{asset('images/Asset 1 (1).svg')}}" alt="" class="img-height mr-2 ml-2">
+        </ul>
+        <div class="form-inline mt-3">
+            <button class="search-button ml-3">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="btn-group ml-3">
+                <button class="language-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-globe"></i> <span class="m-2"> العربية</span> 
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">English</a>
+                    <a class="dropdown-item" href="#">Français</a>
+                </div>
+            </div>
+            @if (!Auth::check())
+                <a class="custom-button" href="{{ route('login') }}">تسجيل دخول</a>
+            @else
+                <div class="dropdown mt-3">
+                    <button class="custom-button dropdown-toggle" type="button" id="dropdownMenuButtonSidebar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonSidebar">
+                        @if (Auth::user()->category == 'admin')
+                            <a class="dropdown-item" href="{{ route('admin.dashboard.index') }}">Admin Dashboard</a>
+                        @endif
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            @lang('layouts.Logout')
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+    
 
     @yield('content')
 
@@ -206,6 +336,15 @@
                 }
             });
         }
+
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.add('show');
+        });
+
+        document.getElementById('sidebarClose').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('show');
+        });
+
     </script>
 
 </body>

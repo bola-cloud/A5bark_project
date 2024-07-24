@@ -1,7 +1,7 @@
 <div style="display: none" id="showObjectsCard" class="card card-body">
     <div class="row">
         <div class="col-6">
-            <h5>@lang('news.Show Title')</h5>
+            <h5>@lang('news.Show Events')</h5>
         </div>
         <div class="col-6 text-end">
             <div class="toggle-btn btn btn-outline-dark btn-sm" data-current-card="#showObjectsCard" data-target-card="#objectsCard">
@@ -12,31 +12,11 @@
     <hr/>
 
     <div class="my-1">
-        <div class="my-3 row">
-            <label for="show-ar_head" class="col-sm-2 col-form-label">@lang('news.Ar Head')</label>
-            <div class="col-sm-10">
-                <input type="text" disabled="disabled" class="form-control" id="show-ar_head" placeholder="@lang('news.Ar Head')">
-            </div>
-        </div><!-- /.my-3 -->
-
+       
         <div class="my-3 row">
             <label for="show-ar_title" class="col-sm-2 col-form-label">@lang('news.Ar Title')</label>
             <div class="col-sm-10">
                 <input type="text" disabled="disabled" class="form-control" id="show-ar_title" placeholder="@lang('news.Ar Title')">
-            </div>
-        </div><!-- /.my-3 -->
-
-        <div class="my-3 row">
-            <label for="show-ar_content" class="col-sm-2 col-form-label">@lang('news.Ar Content')</label>
-            <div class="col-sm-10">
-                <textarea disabled="disabled" class="form-control" id="show-ar_content" rows="3" placeholder="@lang('news.Ar Content')"></textarea>
-            </div>
-        </div><!-- /.my-3 -->
-
-        <div class="my-3 row">
-            <label for="show-en_head" class="col-sm-2 col-form-label">@lang('news.En Head')</label>
-            <div class="col-sm-10">
-                <input type="text" disabled="disabled" class="form-control" id="show-en_head" placeholder="@lang('news.En Head')">
             </div>
         </div><!-- /.my-3 -->
 
@@ -48,9 +28,39 @@
         </div><!-- /.my-3 -->
 
         <div class="my-3 row">
-            <label for="show-en_content" class="col-sm-2 col-form-label">@lang('news.En Content')</label>
+            <label for="show-location" class="col-sm-2 col-form-label">@lang('news.location')</label>
             <div class="col-sm-10">
-                <textarea disabled="disabled" class="form-control" id="show-en_content" rows="3" placeholder="@lang('news.En Content')"></textarea>
+                <input type="text" disabled="disabled" class="form-control" id="show-location" placeholder="@lang('news.location')">
+            </div>
+        </div><!-- /.my-3 -->
+
+        <div class="my-3 row">
+            <label for="show-price" class="col-sm-2 col-form-label">@lang('news.price')</label>
+            <div class="col-sm-10">
+                <input type="text" disabled="disabled" class="form-control" id="show-price" placeholder="@lang('news.price')">
+            </div>
+        </div><!-- /.my-3 -->
+
+        <div class="my-3 row">
+            <label for="show-tickets" class="col-sm-2 col-form-label">@lang('event.tickets_number')</label>
+            <div class="col-sm-10">
+                <input type="text" disabled="disabled" class="form-control" id="show-tickets" placeholder="@lang('event.tickets_number')">
+            </div>
+        </div><!-- /.my-3 -->
+
+        <div class="my-3 row">
+            <label for="show-date" class="col-sm-2 col-form-label">@lang('news.start_date')</label>
+            <div class="col-sm-10">
+                <input type="text" disabled="disabled" class="form-control" id="show-date" placeholder="@lang('news.start_date')">
+            </div>
+        </div><!-- /.my-3 -->
+
+        <div class="my-3 row">
+            <label for="show-festival_id" class="col-sm-2 col-form-label">@lang('festival.festival')</label>
+            <div class="col-sm-10">
+                <select class="form-control select2 w-100" id="show-festival_id" disabled>
+                    <option value="">@lang('news.Select Category')</option>
+                </select>
             </div>
         </div><!-- /.my-3 -->
 
@@ -61,11 +71,5 @@
             </div>
         </div><!-- /.my-3 -->
 
-        <div class="my-3 row">
-            <label for="show-news_category_id" class="col-sm-2 col-form-label">@lang('news.Category')</label>
-            <div class="col-sm-10">
-                <input type="text" disabled="disabled" class="form-control" id="show-news_category_id" placeholder="@lang('news.Category')">
-            </div>
-        </div><!-- /.my-3 -->
     </div><!-- /.my-1 -->
 </div><!-- /.card -->

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LinkController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +31,17 @@ Route::get('/front/festival/event/{event}', [App\Http\Controllers\Front\Festival
 Route::get('/', [App\Http\Controllers\Front\HomeController::class , 'index'])->name('front_home');
 Route::get('/front/festival/event/branch/{branch}', [App\Http\Controllers\Front\FestivalController::class , 'branch'])->name('branch_details');
 
-
+// Route::get('/create-media-link', function () {
+//     try {
+//         Artisan::call('storage:link', [
+//             'target' => storage_path('app/public/media'),
+//             'link' => public_path('media')
+//         ]);
+//         return response()->json(['message' => 'The symbolic link has been created successfully.']);
+//     } catch (\Exception $e) {
+//         return response()->json(['message' => 'Failed to create the symbolic link.', 'error' => $e->getMessage()]);
+//     }
+// });
 
 
 Route::get('/adverticement', function () {

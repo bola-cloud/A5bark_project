@@ -17,6 +17,7 @@ class Event extends Model
         'location',
         'image',
         'festival_id',
+        'tickets',
         'is_active',
     ];
     public function festival()
@@ -26,6 +27,10 @@ class Event extends Model
     public function branch()
     {
         return $this->hasMany(Branch::class,'event_id');
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'event_user');
     }
     public function scopeAdminFilter($query) {
         if (request()->filled('name')) {

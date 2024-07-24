@@ -1,7 +1,7 @@
 <div style="display: none" id="createObjectCard" class="card card-body">
     <div class="row">
         <div class="col-6">
-            <h5>@lang('news.Create Title')</h5>
+            <h5>@lang('news.Create Episode')</h5>
         </div>
         <div class="col-6 text-end">
             <div class="toggle-btn btn btn-outline-dark btn-sm" data-current-card="#createObjectCard" data-target-card="#objectsCard">
@@ -35,7 +35,7 @@
         <div class="my-3 row">
             <label for="video" class="col-sm-2 col-form-label">@lang('news.Video link') <span class="text-danger float-right">*</span></label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="video" placeholder="@lang('news.En Head')">
+                <input type="text" class="form-control" id="video" placeholder="@lang('news.Video link')">
                 <div style="padding: 5px 7px; display: none" id="videoErr" class="err-msg mt-2 alert alert-danger"></div>
             </div>
         </div><!-- /.my-3 -->
@@ -44,7 +44,7 @@
         <div class="my-3 row">
             <label for="number" class="col-sm-2 col-form-label">@lang('news.Episode number') <span class="text-danger float-right">*</span></label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="number" placeholder="@lang('news.Ar Head')">
+                <input type="number" class="form-control" id="number" placeholder="@lang('news.Episode number')">
                 <div style="padding: 5px 7px; display: none" id="numberErr" class="err-msg mt-2 alert alert-danger"></div>
             </div>
         </div><!-- /.my-3 -->

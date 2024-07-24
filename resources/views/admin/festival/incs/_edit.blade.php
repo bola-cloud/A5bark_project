@@ -1,7 +1,7 @@
 <div style="display: none" id="editObjectsCard" class="card card-body">
     <div class="row">
         <div class="col-6">
-            <h5>@lang('festival.Update Title')</h5>
+            <h5>@lang('festival.Update Festival')</h5>
         </div>
         <div class="col-6 text-end">
             <div class="toggle-btn btn btn-outline-dark btn-sm" data-current-card="#editObjectsCard" data-target-card="#objectsCard">
@@ -15,16 +15,16 @@
         <input type="hidden" id="edit-id">
 
         <div class="my-3 row">
-            <label for="edit-ar_title" class="col-sm-2 col-form-label">@lang('festival.ar_title')</label>
+            <label for="edit-ar_title" class="col-sm-2 col-form-label">@lang('festival.Ar Title')</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="edit-ar_title" placeholder="@lang('festival.ar_title')">
+                <input type="text" class="form-control" id="edit-ar_title" placeholder="@lang('festival.Ar Title')">
             </div>
         </div>
 
         <div class="my-3 row">
-            <label for="edit-en_title" class="col-sm-2 col-form-label">@lang('festival.en_title')</label>
+            <label for="edit-en_title" class="col-sm-2 col-form-label">@lang('festival.En Title')</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="edit-en_title" placeholder="@lang('festival.en_title')">
+                <input type="text" class="form-control" id="edit-en_title" placeholder="@lang('festival.En Title')">
             </div>
         </div>
 

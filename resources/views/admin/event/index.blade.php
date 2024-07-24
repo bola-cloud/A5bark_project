@@ -44,13 +44,13 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('layouts.Ar Head')</th>
                         <th>@lang('layouts.Ar Title')</th>
-                        <th>@lang('layouts.Ar Content')</th>
-                        <th>@lang('layouts.En Head')</th>
-                        <th>@lang('layouts.En Title')</th>
-                        <th>@lang('layouts.En Content')</th>
-                        <th>@lang('layouts.Category')</th>
+                        <th>@lang('layouts.Ar Title')</th>
+                        <th>@lang('event.date')</th>
+                        <th>@lang('event.price')</th>
+                        <th>@lang('event.tickets_number')</th>
+                        <th>@lang('event.location')</th>
+                        <th>@lang('event.festival')</th>
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
                     </tr>
@@ -98,17 +98,18 @@
                 create_obj_btn: '.create-object',
                 update_obj_btn: '.update-object',
                 fields_list: [
-                    'id', 'en_title', 'ar_title', 'day', 'date', 'price', 'location', 'festival_id'
+                    'id', 'en_title', 'ar_title', 'day', 'date', 'price', 'location', 'festival_id','tickets'
                 ],
                 imgs_fields: ['image']
             },
             [
                 { data: 'id',           name: 'id' },
-                { data: 'en_title',     name: 'en_title' },
                 { data: 'ar_title',     name: 'ar_title' },
-                { data: 'day',          name: 'day' },
+                { data: 'en_title',     name: 'en_title' },
+                // { data: 'day',          name: 'day' },
                 { data: 'date',         name: 'date' },
                 { data: 'price',        name: 'price' },
+                { data: 'tickets',      name: 'tickets' },
                 { data: 'location',     name: 'location' },
                 { data: 'festival',     name: 'festival' },
                 { data: 'activation',   name: 'activation' },
@@ -144,7 +145,7 @@
 
         objects_dynamic_table.showDataForm = async (targetBtn) => {
             let target_id = $(targetBtn).data('object-id');
-            let keys = ['en_title', 'ar_title', 'day', 'date', 'price', 'location', 'festival_id'];
+            let keys = ['en_title', 'ar_title', 'day', 'date', 'price', 'location', 'festival_id','tickets'];
 
             let response = await axios.get(`{{ url('admin/event') }}/${target_id}`);
             

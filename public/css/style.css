@@ -66,7 +66,7 @@ a{
     border: none;
     color: #2A367F;
     border-radius: 50px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     font-size: 16px;
     display: flex;
     align-items: center;
@@ -235,10 +235,24 @@ ul.navbar-nav.ml-auto {
     align-items: center;
     font-size: 0.875rem;
     color: #6c757d;
+    justify-content: flex-end;
+    padding-right: 5px;
+    /* flex-basis: 100%;
+    justify-content: flex-end; */
 }
+
 .custom-card .time-indicator i {
     margin-right: 0.5rem;
 }
+
+@media (max-width: 576px) {
+    .custom-card .time-indicator {
+        flex-basis: 100%;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+    }
+}
+
 .btn-color:hover{
     background-color: #2a3167 !important;
     color: white !important;
@@ -280,12 +294,18 @@ ul.navbar-nav.ml-auto {
 
 .overlay-text-btn {
     position: absolute;
-    bottom: 38%;
+    bottom: 35%;
     left: 32%;
     transform: translate(-50%, 50%);
     color: white;
     text-align: center;
 }
+.padding-news-title{
+    padding: 0 2vh 0 2vh ;
+}
+
+
+/************** Start media 720 **********************/
 
 @media only screen and (max-width: 720px) {
     img.img-fluid.container-padding{
@@ -349,8 +369,46 @@ ul.navbar-nav.ml-auto {
     .concert-mobile{
         margin: 0 !important;
     }
-
+    .text-size-overlay{
+        font-size: small !important;
+    }
+    a.btn.btn-danger.mr-5.ml-5.mt-3{
+        margin:  0 !important;
+        font-size: small;
+    }
+    a.btn.btn-danger.btn-border-adv{
+        font-size: small;
+    }
+    .padding-news-title{
+        padding: 0  ;
+    }
+    .custom-section {
+        padding: 2rem 2rem;
+    }
+    .form-inline.mt-3{
+        display: flex;
+        flex-direction: column;
+    }
+    div#sidebar{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    ul.navbar-nav{
+        text-align: right;
+        margin-right: 0px !important;
+        padding-right: 0;
+    }
+    nav.navbar.navbar-expand-lg.navbar-light{
+        padding: 0 0 0 10px !important;
+    }
+    a.navbar-brand.d-flex.justify-content-center img{
+        padding-right: 7px !important;
+    }
 }
+
+/************** End media 720 **********************/
 
 .btn-border-adv{
     border-radius: 15px;
@@ -407,31 +465,52 @@ ul.navbar-nav.ml-auto {
 /* .card-footer .btn i {
     font-size: 1.5rem;
 } */
-
 .news-ticker {
     width: 100%;
     overflow: hidden;
-    white-space: nowrap;
     box-sizing: border-box;
     padding: 10px 0;
+    direction: ltr !important;
+}
+
+.ticker-wrap {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.ticker-move {
+    display: inline-block;
+    padding-right: 100%;
+    animation: ticker 60s linear infinite; /* Increased duration to slow down */
+    animation-delay: 5s; /* Delay before starting the animation */
 }
 
 .news-text {
     display: inline-block;
     padding-right: 8%;
-    animation: ticker 15s linear infinite;
     font-size: larger;
 }
 
 @keyframes ticker {
     0% {
-        transform: translateX(0%);
+        transform: translateX(100%);
+    }
+    90% {
+        transform: translateX(-100%);
     }
     100% {
         transform: translateX(-100%);
     }
 }
 
+
+.news-cover-size{
+    max-width: 100%;
+    height: auto;
+    max-height: 608px !important;
+    width: 100%;
+}
 .news-span {
     font-weight: bold;
 }
@@ -448,4 +527,37 @@ svg.w-5.h-5 {
 }
 p.text-sm.text-gray-700.leading-5.dark\:text-gray-400 {
     margin: 18px;
+}
+
+/* navbar */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0,0,0,.15);
+    transition: left 0.3s;
+    z-index: 1050;
+}
+.sidebar.show {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.close {
+    font-size: 1.5rem;
+    color: #000;
+    opacity: 0.5;
+}
+.custom-card iframe{
+    width: 100%;
+    min-height: 29vh;
 }

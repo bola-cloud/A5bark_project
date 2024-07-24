@@ -2,7 +2,7 @@
 <div style="display: none" id="createObjectCard" class="card card-body">
     <div class="row">
         <div class="col-6">
-            <h5>@lang('course_category.Create Title')</h5>
+            <h5>@lang('news.Create News Category')</h5>
         </div>
         <div class="col-6 text-end">
             <div class="toggle-btn btn btn-outline-dark btn-sm" data-current-card="#createObjectCard" data-target-card="#objectsCard">

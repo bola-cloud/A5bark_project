@@ -13,51 +13,30 @@
 
     <div class="my-1">
         <div class="my-3 row">
-            <label for="show-ar_head" class="col-sm-2 col-form-label">@lang('news.Ar Head')</label>
+            <label for="show-ar_name" class="col-sm-2 col-form-label">@lang('news.Ar Name')</label>
             <div class="col-sm-10">
-                <input type="text" disabled="disabled" class="form-control" id="show-ar_head" placeholder="@lang('news.Ar Head')">
+                <input type="text" disabled="disabled" class="form-control" id="show-ar_name" placeholder="@lang('news.Ar Name')">
             </div>
         </div><!-- /.my-3 -->
 
         <div class="my-3 row">
-            <label for="show-ar_title" class="col-sm-2 col-form-label">@lang('news.Ar Title')</label>
+            <label for="show-en_name" class="col-sm-2 col-form-label">@lang('news.En Name')</label>
             <div class="col-sm-10">
-                <input type="text" disabled="disabled" class="form-control" id="show-ar_title" placeholder="@lang('news.Ar Title')">
+                <input type="text" disabled="disabled" class="form-control" id="show-en_name" placeholder="@lang('news.En Name')">
             </div>
         </div><!-- /.my-3 -->
 
         <div class="my-3 row">
-            <label for="show-ar_content" class="col-sm-2 col-form-label">@lang('news.Ar Content')</label>
+            <label for="show-address" class="col-sm-2 col-form-label">@lang('news.Address')</label>
             <div class="col-sm-10">
-                <textarea disabled="disabled" class="form-control" id="show-ar_content" rows="3" placeholder="@lang('news.Ar Content')"></textarea>
+                <textarea disabled="disabled" class="form-control" id="show-address" rows="3" placeholder="@lang('news.Address')"></textarea>
             </div>
         </div><!-- /.my-3 -->
 
         <div class="my-3 row">
-            <label for="show-en_head" class="col-sm-2 col-form-label">@lang('news.En Head')</label>
+            <label for="show-working_hours" class="col-sm-2 col-form-label">@lang('news.Working Hours')</label>
             <div class="col-sm-10">
-                <input type="text" disabled="disabled" class="form-control" id="show-en_head" placeholder="@lang('news.En Head')">
-            </div>
-        </div><!-- /.my-3 -->
-
-        <div class="my-3 row">
-            <label for="show-en_title" class="col-sm-2 col-form-label">@lang('news.En Title')</label>
-            <div class="col-sm-10">
-                <input type="text" disabled="disabled" class="form-control" id="show-en_title" placeholder="@lang('news.En Title')">
-            </div>
-        </div><!-- /.my-3 -->
-
-        <div class="my-3 row">
-            <label for="show-en_content" class="col-sm-2 col-form-label">@lang('news.En Content')</label>
-            <div class="col-sm-10">
-                <textarea disabled="disabled" class="form-control" id="show-en_content" rows="3" placeholder="@lang('news.En Content')"></textarea>
-            </div>
-        </div><!-- /.my-3 -->
-
-        <div class="my-3 row">
-            <label for="show-image" class="col-sm-2 col-form-label">@lang('news.Image')</label>
-            <div class="col-sm-10">
-                <img id="show-image" src="" alt="@lang('news.Image')" style="max-width: 200px; margin-top: 10px;">
+                <input type="text" disabled="disabled" class="form-control" id="show-working_hours" placeholder="@lang('news.Working Hours')">
             </div>
         </div><!-- /.my-3 -->
 

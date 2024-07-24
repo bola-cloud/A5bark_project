@@ -1,7 +1,7 @@
 <div style="display: none" id="editObjectsCard" class="card card-body">
     <div class="row">
         <div class="col-6">
-            <h5>@lang('course_category.Update Title')</h5>
+            <h5>@lang('news.Update News Category')</h5>
         </div>
         <div class="col-6 text-end">
             <div class="toggle-btn btn btn-outline-dark btn-sm" data-current-card="#editObjectsCard" data-target-card="#objectsCard">
@@ -16,7 +16,7 @@
 
         
         <div class="my-3 row">
-            <label for="name" class="col-sm-2 col-form-label">@lang('course_category.Name') <span class="text-danger float-right">*</span></label>
+            <label for="name" class="col-sm-2 col-form-label">@lang('news.Name') <span class="text-danger float-right">*</span></label>
             <div class="col-sm-10 row" style="direction: rtl">
                 <div class="col-6">
                     <input type="text" class="form-control custome-ar-field" id="edit-ar_name" placeholder="أسم التصنيف بالعربية">

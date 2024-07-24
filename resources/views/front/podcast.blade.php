@@ -112,7 +112,7 @@
                     <h5 class="card-title col-md-5 d-flex justify-content-start"> {{$playlist->ar_title}}</h5>
                     <ul class="list-group list-group-flush col-md-5">
                       <h5 class="d-flex justify-content-end ml-3">
-                          <span class="mr-2 ml-2">8</span>
+                          <span class="mr-2 ml-2">{{$playlist->episodes()->count()}}</span>
                           <span> حلقات  <i class="fas fa-list"></i> </span>
                       </h5>
                     </ul>

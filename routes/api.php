@@ -27,6 +27,24 @@ use App\Http\Controllers\StudentApi\GenericController;
 |
 */
 
+/*****************  Mobile app  *************************/
+// Route::get('/front/news', [App\Http\Controllers\Front\NewsController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\Api\HomeController::class , 'index']);
+Route::get('/news', [App\Http\Controllers\Api\NewsController::class , 'index']);
+Route::get('/target/news/{id}', [App\Http\Controllers\Api\NewsController::class , 'targetNews']);
+Route::get('/target/festival', [App\Http\Controllers\Api\FestivalEventsController::class , 'index']);
+Route::get('/target/festival/event/{id}', [App\Http\Controllers\Api\FestivalEventsController::class , 'getTargetEvent']);
+
+Route::get('/playlist/{id}/episodes', [App\Http\Controllers\Api\PlaylisEpisodesController::class , 'getEpisodesOfPlaylist']);
+Route::get('/playlists-and-episodes', [App\Http\Controllers\Api\PlaylisEpisodesController::class , 'getPlaylistsAndEpisodes']);
+
+Route::post('/register', [App\Http\Controllers\Api\UserController::class, 'register']);
+Route::post('/login', [App\Http\Controllers\Api\UserController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/events/{id}/reserve', [App\Http\Controllers\Api\FestivalEventsController::class , 'reserve']);
+});
+
 
 Route::prefix('v1')->group(function () {
     Route::get('home',          [GenericController::class, 'getHomePage']);

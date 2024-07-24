@@ -32,7 +32,7 @@ class User extends Authenticatable implements LaratrustUser, HasMedia
     protected $fillable = [
         'name', 'phone', 'email', 'password', 'category',
         'phone_verified_at', 'email_verified_at', 'is_active',
-        'parent_id', 'group_id', 'picture'
+        'parent_id', 'group_id', 'picture', 'birthdate', 'gender'
     ];
 
     /**
@@ -56,6 +56,11 @@ class User extends Authenticatable implements LaratrustUser, HasMedia
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_user');
+    }
 
     public function registerMediaCollections(): void {
         $this->addMediaCollection('profile_picture')->singleFile();

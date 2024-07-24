@@ -1,7 +1,7 @@
 <div style="display: none" id="createObjectCard" class="card card-body">
     <div class="row">
         <div class="col-6">
-            <h5>@lang('news.Create Title')</h5>
+            <h5>@lang('news.Create Events')</h5>
         </div>
         <div class="col-6 text-end">
             <div class="toggle-btn btn btn-outline-dark btn-sm" data-current-card="#createObjectCard" data-target-card="#objectsCard">
@@ -13,7 +13,6 @@
 
     <form action="/" id="objectForm" enctype="multipart/form-data">
         
-
         <div class="my-3 row">
             <label for="ar_title" class="col-sm-2 col-form-label">@lang('news.Ar Title') <span class="text-danger float-right">*</span></label>
             <div class="col-sm-10">
@@ -45,6 +44,13 @@
         </div> <!-- /.my-3 -->
 
         <div class="my-3 row">
+            <label for="tickets" class="col-sm-2 col-form-label">@lang('event.tickets_number')</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="tickets" placeholder="@lang('event.tickets_number')">
+            </div>
+        </div> <!-- /.my-3 -->
+
+        <div class="my-3 row">
             <label for="date" class="col-sm-2 col-form-label">@lang('festival.start_date')</label>
             <div class="col-sm-10">
                 <input type="datetime-local" class="form-control" id="date" placeholder="@lang('festival.start_date')">
@@ -60,7 +66,7 @@
         </div><!-- /.my-3 -->
 
         <div class="my-3 row">
-            <label for="festival_id" class="col-sm-2 col-form-label">@lang('news.Category')</label>
+            <label for="festival_id" class="col-sm-2 col-form-label">@lang('festival.festival')</label>
             <div class="col-sm-10">
                 <select class="form-control select2 w-100" id="festival_id" name="festival_id">
                     <option value="">@lang('news.Select Category')</option>

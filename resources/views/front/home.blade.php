@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="overlay-text-center">
-                <a href="{{ route('festival') }}" class="btn btn-danger mr-5 ml-5 mt-3">استكشف الفعاليات</a>
+                <a href="{{ route('festival') }}" class="btn btn-danger mr-5 ml-5 mt-3 btn-border-adv">استكشف الفعاليات</a>
             </div>
         </div>
     </div>
@@ -49,10 +49,10 @@
                     </div>
                 </div>
                 <div class="overlay-text-adv">
-                    <p>
+                    <p class="text-size-overlay">
                        {{$adverticement[0]->ar_title}}
                     </p>
-                    <p>
+                    <p class="text-size-overlay">
                         {{$adverticement[0]->ar_head}}
                     </p>
                     
@@ -71,46 +71,37 @@
             <div class="col-md-12">
                 <h1 class="text-center mb-3 mt-5 blue-color">الأخبار</h1>
                 <div class="news-ticker">
-                    @foreach ($news as $new)
-                        <p class="news-text">
-                            <span class="news-span"> الأخبار :</span>
-                            <span class="highlight news-span text-danger"> {{$new->newsCategory->ar_name}} </span> 
-                            : {{$new->ar_head}}
-                        </p>
-                    @endforeach
-                    
-                    <p class="news-text">
-                        <span class="news-span"> الأخبار :</span>
-                        <span class="highlight news-span text-danger">الأعمال الخيرية</span> 
-                        : الجمعيات الخيرية تخفف أعباء المعوزين خلال شهر رمضان.
-                        <span class="highlight news-span text-danger">الاجتماعية</span>
-                        : وزير التضامن الاجتماعي يشهد انطلاق فعاليات الأسبوع الوطني للتنمية المستدامة.
-                    </p>
+                    <div class="ticker-wrap">
+                        <div class="ticker-move">
+                            @foreach ($news as $new)
+                                <p class="news-text">
+                                    <span class="news-span"> الأخبار :</span>
+                                    <span class="highlight news-span text-danger"> {{$new->newsCategory->ar_name}} </span> 
+                                    : {{$new->ar_head}}
+                                </p>
+                            @endforeach                           
+                        </div>
+                    </div>
                 </div>
                 
+                
+                
 
-                <div class="row custom-section">
-                    <div class="col-lg-6 order-lg-2">
-                        <img src="{{ asset('media/'.$news[0]->image) }}" class="img-fluid" alt="Responsive Image" style="max-height: 608px;">
+                @foreach($latestNews as $index => $news)
+                    <div class="row custom-section">
+                        <div class="col-lg-6 {{ $index % 2 == 0 ? 'order-lg-2' : '' }}">
+                            <img src="{{ asset('media/'.$news->image) }}" class="img-fluid news-cover-size" alt="Responsive Image" style="max-height: 608px;">
+                        </div>
+                        <div class="col-lg-6 {{ $index % 2 == 0 ? 'order-lg-1' : '' }} d-flex flex-column justify-content-center">
+                            <h2 class="text-justify">{{ $news->news_category->ar_name }}</h2>
+                            <p class="text-justify">{{ $news->ar_title }}</p>
+                            <p class="text-justify">{{ $news->ar_head }}</p>
+                            <a href="{{ route('news_details', $news->id) }}" class="custom-btn align-self-start">المزيد</a>
+                        </div>
                     </div>
-                    <div class="col-lg-6 order-lg-1 d-flex flex-column justify-content-center">
-                        <h2 class="text-justify">{{$news[0]->newsCategory->ar_name}}</h2>
-                        <p class="text-justify">{{$news[0]->ar_title}}</p>
-                        <p class="text-justify"> {{$news[0]->ar_head}} </p>
-                        <a href="{{route('news_details',$news[0]->id)}}" class="custom-btn align-self-start">المزيد</a>
-                    </div>
-                </div>
-                <div class="row custom-section">
-                    <div class="col-lg-6 ">
-                        <img src="{{ asset('media/'.$news[1]->image) }}" class="img-fluid" alt="Responsive Image">
-                    </div>
-                    <div class="col-lg-6  d-flex flex-column justify-content-center">
-                        <h2 class="text-justify">{{$news[1]->newsCategory->ar_name}}</h2>
-                        <p class="text-justify">{{$news[1]->ar_title}}</p>
-                        <p class="text-justify"> {{$news[1]->ar_head}} </p>
-                        <a href="{{route('news_details',$news[1]->id)}}" class="custom-btn align-self-start">المزيد</a>
-                    </div>
-                </div>
+                @endforeach
+
+
             </div>
         </div>
     </div>
