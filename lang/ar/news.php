@@ -57,5 +57,10 @@ return [
     'Branch' => 'الفرع',
     'Select Branch' => 'اختر فرع',
     'Create Name' => 'إنشاء الاسم',
+    'object_error'=> 'خطا في العنصر',
+    'object_created'=> ' تم انشاء العنصر جديد',
+    'object_not_found'=>'العنصر غير موجود',
+    'object_deleted'=>'تم حذف العنصر',
+    'object_updated'=>'تم تعديل العنصر',
 
 ];

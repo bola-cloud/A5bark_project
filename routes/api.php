@@ -37,14 +37,16 @@ Route::get('/target/festival/event/{id}', [App\Http\Controllers\Api\FestivalEven
 
 Route::get('/playlist/{id}/episodes', [App\Http\Controllers\Api\PlaylisEpisodesController::class , 'getEpisodesOfPlaylist']);
 Route::get('/playlists-and-episodes', [App\Http\Controllers\Api\PlaylisEpisodesController::class , 'getPlaylistsAndEpisodes']);
+Route::get('/episodes/home-show', [App\Http\Controllers\Api\PlaylisEpisodesController::class , 'getHomeShowEpisode']);
 
 Route::post('/register', [App\Http\Controllers\Api\UserController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\Api\UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/events/{id}/reserve', [App\Http\Controllers\Api\FestivalEventsController::class , 'reserve']);
+    Route::put('/user/update', [App\Http\Controllers\Api\UserController::class, 'update']);
+    Route::delete('/user/delete', [App\Http\Controllers\Api\UserController::class, 'destroy']);
 });
-
 
 Route::prefix('v1')->group(function () {
     Route::get('home',          [GenericController::class, 'getHomePage']);

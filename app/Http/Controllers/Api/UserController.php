@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,6 +20,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'birthdate' => 'nullable|date',
             'gender' => 'nullable|in:ذكر,انثي',
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the picture
         ]);
 
         if ($validator->fails()) {
@@ -27,6 +29,13 @@ class UserController extends Controller
                 'message' => 'Validation Error',
                 'errors' => $validator->errors()
             ], 422);
+        }
+
+        // Handle the picture upload
+        $picturePath = null;
+        if ($request->hasFile('picture')) {
+            $picturePath = $request->file('picture')->store('user_images', 'media');
+            $picturePath = 'media/' . $picturePath;
         }
 
         $user = User::create([
@@ -38,6 +47,7 @@ class UserController extends Controller
             'gender' => $request->gender,
             'category' => 'user', // Default category
             'is_active' => true, // Default value for is_active
+            'picture' => $picturePath, // Save the picture path
         ]);
 
         return response()->json([
@@ -46,6 +56,73 @@ class UserController extends Controller
             'data' => $user
         ], 201);
     }
+
+    public function destroy()
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            $user->delete();
+            return response()->json(['message' => 'User account deleted successfully.'], 200);
+        }
+
+        return response()->json(['message' => 'User not found.'], 404);
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        // $all= $request->all();
+        // return $all;
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
+            'phone' => 'required|string|max:15|unique:users,phone,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+            'birthdate' => 'nullable|date',
+            'gender' => 'nullable|in:ذكر,انثي',
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Validation Error',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Handle the picture upload
+        if ($request->hasFile('picture')) {
+            $picturePath = $request->file('picture')->store('user_images', 'media');
+            $user->picture = 'media/' . $picturePath;
+        }
+
+        // Update user data
+        $user->name = $request->name;
+        $user->email = $request->email ?: $user->email;
+        $user->phone = $request->phone;
+        $user->birthdate = $request->birthdate ?: $user->birthdate;
+        $user->gender = $request->gender ?: $user->gender;
+
+        // Update password if provided
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'User updated successfully',
+            'data' => $user
+        ], 200);
+    }
+
 
     public function login(Request $request)
     {

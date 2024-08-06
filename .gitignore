@@ -4,8 +4,10 @@
 /public/storage
 /public/media
 /public/images
+/public/plugins
 /public/static_images
 /public/media/*
+/storage
 /storage/*.key
 /vendor
 .env

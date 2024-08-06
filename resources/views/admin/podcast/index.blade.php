@@ -6,7 +6,7 @@
 @endpush
 
 @push('title')
-    <h1 class="h2">@lang('layouts.Adverticement')</h1>
+    <h1 class="h2">@lang('layouts.Podcast')</h1>
 @endpush
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 pt-1">
-                    @lang('layouts.Adverticement Adminstration')
+                    @lang('layouts.Podcast Adminstration')
                 </div><!-- /.col-6 -->
                 <div class="col-6 text-end">
                     
@@ -38,7 +38,7 @@
 
         
         <div class="card-body custome-table">
-            @include('admin.adverticement.incs._search')
+            @include('admin.podcast.incs._search')
 
             <table id="dataTable" class="table text-center">
                 <thead>
@@ -46,10 +46,8 @@
                         <th>#</th>
                         <th>@lang('news.Ar Head')</th>
                         <th>@lang('news.Ar Title')</th>
-                        {{-- <th>@lang('course_category.Ar Content')</th> --}}
                         <th>@lang('news.En Head')</th>
                         <th>@lang('news.En Title')</th>
-                        {{-- <th>@lang('course_category.En Content')</th> --}}
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
                     </tr>
@@ -61,15 +59,15 @@
 
     
     @if($permissions == 'admin' || in_array('courseCategories_add', $permissions))
-        @include('admin.adverticement.incs._create')
+        @include('admin.podcast.incs._create')
     @endif
         
     @if($permissions == 'admin' || in_array('courseCategories_show', $permissions))
-        @include('admin.adverticement.incs._show')
+        @include('admin.podcast.incs._show')
     @endif 
     
     @if($permissions == 'admin' || in_array('courseCategories_edit', $permissions))
-        @include('admin.adverticement.incs._edit')
+        @include('admin.podcast.incs._edit')
     @endif
 
 @endsection
@@ -79,11 +77,11 @@
     $(document).ready(function () {
         const objects_dynamic_table = new DynamicTable(
             {
-                index_route:    "{{ route('admin.adverticement.index') }}",
-                store_route:    "{{ route('admin.adverticement.store') }}",
-                show_route:     "{{ route('admin.adverticement.index') }}",
-                update_route:   "{{ route('admin.adverticement.index') }}",
-                destroy_route:  "{{ route('admin.adverticement.index') }}",
+                index_route:    "{{ route('admin.podcast.index') }}",
+                store_route:    "{{ route('admin.podcast.store') }}",
+                show_route:     "{{ route('admin.podcast.index') }}",
+                update_route:   "{{ route('admin.podcast.index') }}",
+                destroy_route:  "{{ route('admin.podcast.index') }}",
             },
             '#dataTable',
             {
@@ -97,7 +95,7 @@
                 create_obj_btn: '.create-object',
                 update_obj_btn: '.update-object',
                 fields_list: [
-                    'id', 'ar_head', 'ar_title', 'ar_content', 'en_head', 'en_title', 'en_content'
+                    'id', 'ar_head', 'ar_title', 'en_head', 'en_title'
                 ],
                 imgs_fields: ['image']
             },
@@ -105,10 +103,8 @@
                 { data: 'id', name: 'id' },
                 { data: 'ar_head', name: 'ar_head' },
                 { data: 'ar_title', name: 'ar_title' },
-                // { data: 'ar_content', name: 'ar_content' },
                 { data: 'en_head', name: 'en_head' },
                 { data: 'en_title', name: 'en_title' },
-                // { data: 'en_content', name: 'en_content' },
                 { data: 'activation', name: 'activation' },
                 { data: 'actions', name: 'actions' },
             ],
@@ -137,12 +133,6 @@
                 $(`#${prefix}ar_titleErr`).text(err_msg).slideDown(500);
             }
 
-            if (data.get('ar_content') === '') {
-                is_valid = false;
-                let err_msg = '@lang("news.ar_content_required")';
-                $(`#${prefix}ar_contentErr`).text(err_msg).slideDown(500);
-            }
-
             if (data.get('en_head') === '') {
                 is_valid = false;
                 let err_msg = '@lang("news.en_head_required")';
@@ -155,20 +145,14 @@
                 $(`#${prefix}en_titleErr`).text(err_msg).slideDown(500);
             }
 
-            if (data.get('en_content') === '') {
-                is_valid = false;
-                let err_msg = '@lang("news.en_content_required")';
-                $(`#${prefix}en_contentErr`).text(err_msg).slideDown(500);
-            }
-
             return is_valid;
         };
 
         objects_dynamic_table.showDataForm = async (targetBtn) => {
             let target_id = $(targetBtn).data('object-id');
-            let keys = ['ar_head', 'ar_title', 'ar_content', 'en_head', 'en_title', 'en_content'];
+            let keys = ['ar_head', 'ar_title', 'en_head', 'en_title'];
 
-            let response = await axios.get(`{{ url('admin/adverticement') }}/${target_id}`);
+            let response = await axios.get(`{{ url('admin/podcast') }}/${target_id}`);
             
             let { data, success, msg } = response.data;
             console.log(data)

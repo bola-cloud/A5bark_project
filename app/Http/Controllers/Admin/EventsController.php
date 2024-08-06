@@ -131,12 +131,12 @@ class EventsController extends Controller
             'en_title' => 'required|max:255',
             'ar_title' => 'required|max:255',
             'day' => 'required',
-            'date' => 'nullable|date',
-            'price' => 'required|numeric', 
-            'tickets' => 'required|numeric',           
+            'date' => 'required|date',
+            'price' => 'required|numeric',           
+            'tickets' => 'required|numeric',             
             'location' => 'required',
             'festival_id' => 'nullable|exists:festivals,id',
-            'image' => 'max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
         if ($validator->fails()) {

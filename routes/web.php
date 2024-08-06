@@ -17,11 +17,12 @@ use Illuminate\Support\Facades\Artisan;
 
 /******************** front routes ******************/
 
-
-
-
-
+Route::group([
+    'prefix'     => LaravelLocalization::setLocale() 
+], function () {
 Route::get('/front/news', [App\Http\Controllers\Front\NewsController::class, 'index'])->name('news');
+Route::get('/front/adverticement', [App\Http\Controllers\Front\HomeController::class, 'advDetails'])->name('adverticement');
+Route::get('/front/about', [App\Http\Controllers\Front\HomeController::class, 'about'])->name('about');
 Route::get('/front/news/category/{category}', [App\Http\Controllers\Front\NewsController::class , 'filterByCategory'])->name('news.filter');
 Route::get('/front/news/details/{id}', [App\Http\Controllers\Front\NewsController::class , 'details'])->name('news_details');
 Route::get('/front/playlist/episodes/{id}', [App\Http\Controllers\Front\ProdcastController::class , 'episodes'])->name('episodes');
@@ -30,31 +31,29 @@ Route::get('/front/festival', [App\Http\Controllers\Front\FestivalController::cl
 Route::get('/front/festival/event/{event}', [App\Http\Controllers\Front\FestivalController::class , 'event'])->name('event_details');
 Route::get('/', [App\Http\Controllers\Front\HomeController::class , 'index'])->name('front_home');
 Route::get('/front/festival/event/branch/{branch}', [App\Http\Controllers\Front\FestivalController::class , 'branch'])->name('branch_details');
+Route::get('/search', [App\Http\Controllers\Front\HomeController::class, 'search'])->name('search');
 
-// Route::get('/create-media-link', function () {
-//     try {
-//         Artisan::call('storage:link', [
-//             'target' => storage_path('app/public/media'),
-//             'link' => public_path('media')
-//         ]);
-//         return response()->json(['message' => 'The symbolic link has been created successfully.']);
-//     } catch (\Exception $e) {
-//         return response()->json(['message' => 'Failed to create the symbolic link.', 'error' => $e->getMessage()]);
-//     }
-// });
-
-
-Route::get('/adverticement', function () {
-    return view('front.adverticement');
-})->name('adverticement');
-
-
-
+Route::get('/create-media-link', function () {
+    try {
+        Artisan::call('storage:link');
+        return response()->json(['message' => 'The symbolic link has been created successfully.']);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Failed to create the symbolic link.', 'error' => $e->getMessage()]);
+    }
+});
+// terms-and-conditions
+Route::get('/terms-and-conditions', function () {
+    return view('terms-conditions');
+})->name('terms-conditions');
+// Route::get('/adverticement', function () {
+//     return view('front.adverticement');
+// })->name('adverticement');
 Route::get('/home1', function () {
     return view('welcome');
 });
 
-
+    
+});
 
 
 /******************** End front routes ******************/
@@ -173,6 +172,17 @@ Route::group([
             'edit'      => 'admin.adverticement.edit',
             'update'    => 'admin.adverticement.update',
             'destroy'   => 'admin.adverticement.destroy'
+        ]
+    ]);
+
+    Route::resource('podcast', PodcastController::class, [
+        'names' => [
+            'index'     => 'admin.podcast.index',
+            'store'     => 'admin.podcast.store',
+            'show'      => 'admin.podcast.show',
+            'edit'      => 'admin.podcast.edit',
+            'update'    => 'admin.podcast.update',
+            'destroy'   => 'admin.podcast.destroy'
         ]
     ]);
 

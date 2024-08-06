@@ -40,6 +40,9 @@ return [
     'Play List Adminstration'   =>'ادارة قوائم التشغيل',
     'News' => 'الاخبار',
     'News Adminstration' => 'ادارة الاخبار',
+    'Home'=>'الظهور في الصفحة الرئيسية',
+    'Podcast Adminstration'=>' ادارة البودكاست ',
+    'Podcast'=>' البودكاست ',
 
     'News_category' => 'فئة الأخبار',
     'News' => 'الأخبار',

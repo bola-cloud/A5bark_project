@@ -94,7 +94,7 @@
                 create_obj_btn: '.create-object',
                 update_obj_btn: '.update-object',
                 fields_list: [
-                    'id','ar_name', 'en_name'
+                    'id','ar_name', 'en_name','event_id'
                 ],
                 imgs_fields: ['image']
             },

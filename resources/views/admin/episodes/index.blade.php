@@ -51,6 +51,7 @@
                         <th>@lang('episodes.number')</th>
                         <th>@lang('episodes.time')</th>
                         <th>@lang('episodes.playlist')</th>
+                        <th>@lang('layouts.Home')</th>
                         <th>@lang('layouts.Active')</th>
                         <th>@lang('layouts.Actions')</th>
                     </tr>
@@ -116,6 +117,7 @@
                 // { data: 'titok_link',       name: 'titok_link' },
                 // { data: 'youtube_link',     name: 'youtube_link' },
                 { data: 'playlist',         name: 'playlist' },
+                { data: 'home',             name: 'home' },
                 { data: 'activation',       name: 'activation' },
                 { data: 'actions',          name: 'actions' },
             ],
@@ -208,32 +210,76 @@
             }
         };
 
-        $('#playlist_id, #edit-playlist_id,#show-playlist_id').select2({
-            ajax: {
-                url: "{{ route('admin.search.playlist') }}",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        q: params.term // search term
-                    };
+        
+
+        (() => {
+            $('#playlist_id, #edit-playlist_id,#show-playlist_id').select2({
+                ajax: {
+                    url: "{{ route('admin.search.playlist') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term // search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data.map(function (item) {
+                                return {
+                                    id: item.id,
+                                    text: item.ar_title + ' / ' + item.en_title
+                                };
+                            })
+                        };
+                    },
+                    cache: true
                 },
-                processResults: function (data) {
-                    return {
-                        results: data.map(function (item) {
-                            return {
-                                id: item.id,
-                                text: item.ar_title + ' / ' + item.en_title
-                            };
-                        })
-                    };
-                },
-                cache: true
-            },
-            placeholder: '@lang('news.Select playlist')',
-            minimumInputLength: 1,
-            width: "100%"
-        });
+                placeholder: '@lang('news.Select playlist')',
+                minimumInputLength: 1,
+                width: "100%"
+            });
+
+            $('#dataTable').on('change', '.c-home-btn', function (e) {
+                let target_id = $(this).data('target-obj');
+
+                axios.post(`{{ route('admin.episodes.index') }}/${target_id}`, {
+                    _token  : $('meta[name="csrf-token"]').attr('content'),
+                    _method : 'PUT',
+                    home_show_object: true
+                }).then(res => {
+                    const { success, msg } = res.data;
+
+                    if (!success) {
+                        $(this).prop('checked', !$(this).prop('checked'));
+                        
+                        Toastify({
+                            text: msg,
+                            className: "info",
+                            offset: {
+                                x: 20,
+                                y: 50
+                            },
+                            style: {
+                                color: '#842029', background: '#f8d7da', borderColor: '#f5c2c7'
+                            }
+                        }).showToast();
+                    } else {
+                        Toastify({
+                            text: msg,
+                            className: "info",
+                            offset: {
+                                x: 20, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                                y: 50 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                            },
+                            style: {
+                                color: '#0f5132', background: '#d1e7dd', borderColor: '#badbcc'
+                            }
+                        }).showToast();
+                    }
+                })// axios
+            });
+        })();
     });
 </script>
 @endpush

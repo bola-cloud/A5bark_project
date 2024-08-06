@@ -40,7 +40,7 @@ return [
     'Play List Adminstration'   =>'Play List Adminstration',
     'News' => 'News',
     'News Adminstration' => 'News Adminstration',
-
+    'Home'=>'Show on Home',
     'News_category' => 'News Category',
     'News' => 'News',
     'festival' => 'Festival',
@@ -51,6 +51,8 @@ return [
     'Create Title'=>'Create',
     'motion'=>'Motion',
     'adverticement'=>'Adverticement',
+    'Podcast Adminstration'=>'Podcast Adminstration',
+    'Podcast'=>'Podcast',
 
 
     //event

@@ -57,5 +57,10 @@ return [
     'Branch' => 'Branch',
     'Select Branch' => 'Select Branch',
     'Create Name' => 'Create Name',
+    'object_error'=> ' object error ',
+    'object_created'=> 'object created',
+    'object_not_found'=>'object not found',
+    'object_deleted'=>'object deleted',
+    'object_updated'=>'object updated',
 
 ];

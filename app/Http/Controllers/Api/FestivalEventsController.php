@@ -8,6 +8,7 @@ use App\Models\Festival;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class FestivalEventsController extends Controller
 {
@@ -85,13 +86,11 @@ class FestivalEventsController extends Controller
 
     public function reserve(Request $request, $eventId)
     {
-        Log::info('Reserve method called');
-
         // Check if the user is logged in
         if (!Auth::check()) {
             return response()->json([
                 'status' => false,
-                'message' => 'User not authenticated'
+                'message' => 'يجب تسجييل الدخول اولا'
             ], 401);
         }
 
@@ -101,7 +100,7 @@ class FestivalEventsController extends Controller
         if (!$event || !$event->is_active) {
             return response()->json([
                 'status' => false,
-                'message' => 'Event not found or inactive'
+                'message' => 'هذه الفعالية غير موجودة او غير مفعلة'
             ], 404);
         }
 
@@ -110,19 +109,35 @@ class FestivalEventsController extends Controller
         if ($event->tickets <= $existingReservations) {
             return response()->json([
                 'status' => false,
-                'message' => 'No tickets available'
+                'message' => 'لا يوجد عدد تذاكر كافي'
             ], 400);
         }
 
-        // Make the reservation
-        $event->users()->attach($user->id);
+        // Generate a unique 6-digit code
+        $code = $this->generateUniqueCode();
+
+        // Make the reservation and save the code in the pivot table
+        $event->users()->attach($user->id, [
+            'code' => $code,
+            'created_at' => Carbon::now(),
+        ]);
 
         return response()->json([
             'status' => true,
             'message' => 'تم الحجز بنجاح',
             'data' => [
-                'event_name' => $event->ar_title // or $event->en_title depending on the language
+                'event_name' => $event->ar_title, // or $event->en_title depending on the language
+                'code' => $code
             ]
         ], 200);
+    }
+
+    private function generateUniqueCode()
+    {
+        do {
+            $code = mt_rand(100000, 999999);
+        } while (\DB::table('event_user')->where('code', $code)->exists());
+
+        return $code;
     }
 }

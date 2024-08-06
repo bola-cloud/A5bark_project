@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('event_user', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('CASCADE')->onDelete('SET NULL');
